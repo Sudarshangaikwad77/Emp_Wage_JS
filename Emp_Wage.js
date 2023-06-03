@@ -7,6 +7,7 @@ const partTimeHours = 4;
 const workingDaysPerMonth = 20;
 
 let totalWage = 0;
+let dailyWageArray = [];
 
 for (let day = 1; day <= workingDaysPerMonth; day++) {
     let employeeAttendance;
@@ -37,7 +38,9 @@ for (let day = 1; day <= workingDaysPerMonth; day++) {
             break;
     }
 
+    dailyWageArray.push(employeeWage);
     totalWage += employeeWage;
 }
 
+console.log("Daily Wage Array: " + dailyWageArray);
 console.log("Total Wage for the Month: " + totalWage);
