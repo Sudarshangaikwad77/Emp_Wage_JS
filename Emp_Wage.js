@@ -45,3 +45,10 @@ for (let day = 1; day <= workingDaysPerMonth; day++) {
 //Using Reduce and ForEach
 let totalWageUsingReduce = dailyWageArray.reduce((total, wage) => total + wage, 0);
 console.log("Daily Wage Array: " + dailyWageArray);
+console.log("Total Wage for the Month (using reduce): " + totalWageUsingReduce);
+
+
+//Using Map Functions
+
+let dailyWageWithDay = dailyWageArray.map((wage, index) => `Day ${index + 1}: ${wage}`);
+console.log("Daily Wage with Day: " + dailyWageWithDay);
