@@ -68,3 +68,7 @@ let fullTimeWageDays = dailyWageArray
 let firstFullTimeWageDay = dailyWageArray.findIndex(wage => wage === wagePerHour * fullDayHours);
 console.log("First occurrence when Full Time Wage was earned: Day " + (firstFullTimeWageDay + 1));
 
+//Checking Every Element is truly holdig full time Wage
+
+let isAllFullTimeWage = dailyWageArray.every(wage => wage === wagePerHour * fullDayHours);
+console.log("Is every element of Full Time Wage truly holding Full-time wage? " + isAllFullTimeWage);
