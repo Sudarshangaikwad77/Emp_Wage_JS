@@ -77,3 +77,9 @@ console.log("Is every element of Full Time Wage truly holding Full-time wage? " 
 
 let hasPartTimeWage = dailyWageArray.some(wage => wage === wagePerHour * partTimeHours);
 console.log("Is there any Part Time Wage? " + hasPartTimeWage);
+
+
+//finding number of working day employee 
+
+let numberOfDaysWorked = dailyWageArray.filter(wage => wage > 0).length;
+console.log("Number of days the Employee worked: " + numberOfDaysWorked);
