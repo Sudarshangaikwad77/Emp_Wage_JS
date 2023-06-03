@@ -72,3 +72,8 @@ console.log("First occurrence when Full Time Wage was earned: Day " + (firstFull
 
 let isAllFullTimeWage = dailyWageArray.every(wage => wage === wagePerHour * fullDayHours);
 console.log("Is every element of Full Time Wage truly holding Full-time wage? " + isAllFullTimeWage);
+
+//Checking Partime Wage of Employee Using Some Funtion
+
+let hasPartTimeWage = dailyWageArray.some(wage => wage === wagePerHour * partTimeHours);
+console.log("Is there any Part Time Wage? " + hasPartTimeWage);
