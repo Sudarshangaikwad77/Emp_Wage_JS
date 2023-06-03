@@ -1,0 +1,1 @@
+console.log("welcome emp_wage project")
