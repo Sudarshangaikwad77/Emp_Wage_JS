@@ -8,20 +8,29 @@ const partTimeHours = 4;
 let employeeAttendance;
 let check = Math.floor(Math.random() * 3);
 
-if (check === 0) {
-    employeeAttendance = "Absent";
-} else if (check === 1) {
-    employeeAttendance = "Part-Time";
-} else {
-    employeeAttendance = "Full-Time";
+switch (check) {
+    case 0:
+        employeeAttendance = "Absent";
+        break;
+    case 1:
+        employeeAttendance = "Part-Time";
+        break;
+    case 2:
+        employeeAttendance = "Full-Time";
+        break;
+    default:
+        employeeAttendance = "Invalid";
 }
 
 let employeeWage = 0;
 
-if (employeeAttendance === "Part-Time") {
-    employeeWage = wagePerHour * partTimeHours;
-} else if (employeeAttendance === "Full-Time") {
-    employeeWage = wagePerHour * fullDayHours;
+switch (employeeAttendance) {
+    case "Part-Time":
+        employeeWage = wagePerHour * partTimeHours;
+        break;
+    case "Full-Time":
+        employeeWage = wagePerHour * fullDayHours;
+        break;
 }
 
 console.log("Employee Attendance: " + employeeAttendance);
