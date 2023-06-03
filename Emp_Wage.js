@@ -42,5 +42,5 @@ for (let day = 1; day <= workingDaysPerMonth; day++) {
     totalWage += employeeWage;
 }
 
-console.log("Daily Wage Array: " + dailyWageArray);
+console.log("Daily of employee Wage Array: " + dailyWageArray);
 console.log("Total Wage for the Month: " + totalWage);
