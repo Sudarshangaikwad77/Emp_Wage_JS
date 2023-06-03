@@ -52,3 +52,12 @@ console.log("Total Wage for the Month (using reduce): " + totalWageUsingReduce);
 
 let dailyWageWithDay = dailyWageArray.map((wage, index) => `Day ${index + 1}: ${wage}`);
 console.log("Daily Wage with Day: " + dailyWageWithDay);
+
+
+//Shows Only Days Where Empolyee Earn Only 160;
+
+let fullTimeWageDays = dailyWageArray
+    .map((wage, index) => (wage === wagePerHour * fullDayHours ? index + 1 : null))
+    .filter(day => day !== null);
+
+    
