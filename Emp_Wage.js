@@ -1,16 +1,23 @@
 
-//UC-1 Check Employee is Present!
+console.log("Welcome To EmployeeWage!!");
 
-console.log("Welcome To EmloyeeWage!!");
+const wagePerHour = 20;
+const fullDayHours = 8;
 
+let employeeAttendance;
+let check = Math.floor(Math.random() * 2);
 
-let Employee_Attandance;
+if (check !== 0) {
+    employeeAttendance = "Present";
+} else {
+    employeeAttendance = "Absent";
+}
 
-let Check = Math.random()*2;
+let employeeWage = 0;
 
-if (Check != 0){
-    Employee_Attandance = "Present";
-}else
-    Employee_Attandance = "Absent";
+if (employeeAttendance === "Present") {
+    employeeWage = wagePerHour * fullDayHours;
+}
 
-console.log(Employee_Attandance);
+console.log("Employee Attendance: " + employeeAttendance);
+console.log("Employee Wage: " + employeeWage);
