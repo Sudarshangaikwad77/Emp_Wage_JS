@@ -60,4 +60,11 @@ let fullTimeWageDays = dailyWageArray
     .map((wage, index) => (wage === wagePerHour * fullDayHours ? index + 1 : null))
     .filter(day => day !== null);
 
-    
+    console.log("Days when Full-time wage of 160 was earned: " + fullTimeWageDays);
+
+
+//Find First Time wage Using Find Functions
+
+let firstFullTimeWageDay = dailyWageArray.findIndex(wage => wage === wagePerHour * fullDayHours);
+console.log("First occurrence when Full Time Wage was earned: Day " + (firstFullTimeWageDay + 1));
+
