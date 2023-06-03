@@ -7,11 +7,11 @@ const partTimeHours = 4;
 const workingDaysPerMonth = 20;
 
 let totalWage = 0;
-let dailyWageArray = [];
+let dailyWageMap = new Map();
 
 for (let day = 1; day <= workingDaysPerMonth; day++) {
     let employeeAttendance;
-    let check = Math.floor(Math.random() * 3);
+    let check = Math.floor(Math.random() * 3); // Generate random number between 0 and 2
 
     switch (check) {
         case 0:
@@ -38,48 +38,9 @@ for (let day = 1; day <= workingDaysPerMonth; day++) {
             break;
     }
 
-    dailyWageArray.push(employeeWage);
+    dailyWageMap.set("Day " + day, employeeWage);
     totalWage += employeeWage;
 }
 
-//Using Reduce and ForEach
-let totalWageUsingReduce = dailyWageArray.reduce((total, wage) => total + wage, 0);
-console.log("Daily Wage Array: " + dailyWageArray);
-console.log("Total Wage for the Month (using reduce): " + totalWageUsingReduce);
-
-
-//Using Map Functions
-
-let dailyWageWithDay = dailyWageArray.map((wage, index) => `Day ${index + 1}: ${wage}`);
-console.log("Daily Wage with Day: " + dailyWageWithDay);
-
-
-//Shows Only Days Where Empolyee Earn Only 160;
-
-let fullTimeWageDays = dailyWageArray
-    .map((wage, index) => (wage === wagePerHour * fullDayHours ? index + 1 : null))
-    .filter(day => day !== null);
-
-    console.log("Days when Full-time wage of 160 was earned: " + fullTimeWageDays);
-
-
-//Find First Time wage Using Find Functions
-
-let firstFullTimeWageDay = dailyWageArray.findIndex(wage => wage === wagePerHour * fullDayHours);
-console.log("First occurrence when Full Time Wage was earned: Day " + (firstFullTimeWageDay + 1));
-
-//Checking Every Element is truly holdig full time Wage
-
-let isAllFullTimeWage = dailyWageArray.every(wage => wage === wagePerHour * fullDayHours);
-console.log("Is every element of Full Time Wage truly holding Full-time wage? " + isAllFullTimeWage);
-
-//Checking Partime Wage of Employee Using Some Funtion
-
-let hasPartTimeWage = dailyWageArray.some(wage => wage === wagePerHour * partTimeHours);
-console.log("Is there any Part Time Wage? " + hasPartTimeWage);
-
-
-//finding number of working day employee 
-
-let numberOfDaysWorked = dailyWageArray.filter(wage => wage > 0).length;
-console.log("Number of days the Employee worked: " + numberOfDaysWorked);
+console.log("Daily Wage Map: ", dailyWageMap);
+console.log("Total Wage for the Month: " + totalWage);
