@@ -1,3 +1,4 @@
+
 console.log("Welcome To EmployeeWage!!");
 
 const wagePerHour = 20;
