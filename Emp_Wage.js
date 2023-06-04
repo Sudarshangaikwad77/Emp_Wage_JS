@@ -1,7 +1,8 @@
+
 class EmployeeWageCalculator {
     constructor(company, wagePerHour, numWorkingDays, maxWorkingHours) {
-        this.part_time_hour = 4;
-        this.full_day_hour = 8;
+        this.PART_TIME_HOUR = 4;
+        this.FULL_DAY_HOUR = 8;
         this.totalWorkingDays = 0;
         this.totalWorkingHours = 0;
         this.monthlyWage = 0;
@@ -13,22 +14,21 @@ class EmployeeWageCalculator {
     }
   
     calculateWage() {
-        console.log(`Calculating wage for company ${this.company}`);
+        console.log("Calculating wage for company " + this.company);
         let dailyWage;
         while (this.totalWorkingDays < this.numWorkingDays && this.totalWorkingHours < this.maxWorkingHours) {
-            const newAttendance = Math.floor(Math.random() * 3); // 0 for absent, 1 for part-time, 2 for full-time
+            let newAttendance = Math.floor(Math.random() * 3); // 0 for absent, 1 for part-time, 2 for full-time
             switch (newAttendance) {
                 case 1:
-                    dailyWage = this.wagePerHour * this.part_time_hour;
-                    this.totalWorkingHours += this.part_time_hour;
+                    dailyWage = this.wagePerHour * this.PART_TIME_HOUR;
+                    this.totalWorkingHours += this.PART_TIME_HOUR;
                     break;
                 case 2:
-                    dailyWage = this.wagePerHour * this.full_day_hour;
-                    this.totalWorkingHours += this.full_day_hour;
+                    dailyWage = this.wagePerHour * this.FULL_DAY_HOUR;
+                    this.totalWorkingHours += this.FULL_DAY_HOUR;
                     break;
                 default:
                     dailyWage = 0;
-                    break;
             }
             this.totalWorkingDays++;
             this.monthlyWage += dailyWage;
@@ -88,7 +88,8 @@ class EmployeeWageCalculator {
   
     addCompany(company, wagePerHour, numWorkingDays, maxWorkingHours) {
         const emp = new CompanyEmpWage(company, wagePerHour, numWorkingDays, maxWorkingHours);
-        this.companies[this.numCompanies++] = emp;
+        this.companies.push(emp);
+        this.numCompanies++;
     }
   
     computeWages() {
@@ -100,21 +101,34 @@ class EmployeeWageCalculator {
                 this.companies[i].getMaxWorkingHours()
             ).calculateWage();
             this.companies[i].setTotalWage(wage);
-            console.log(`Total wage for ${this.companies[i].getCompany()} is ${this.companies[i].getTotalWage()}`);
-        }
-    }
-  }
-  
-  class EmpWage {
-    static main() {
+            console.log(
+                "Total wage for " +
+                this.companies[i].getCompany() +
+                " is " +  this.companies[i].getTotalWage()
+                );
+              }
+          }
+      
+          getTotalWage(company) {
+              for (let i = 0; i < this.companies.length; i++) {
+                  if (this.companies[i].getCompany() === company) {
+                      return this.companies[i].getTotalWage();
+                  }
+              }
+              return 0;
+          }
+      }
+      
       const empWageBuilder = new EmpWageBuilder();
       empWageBuilder.addCompany("Company A", 20, 20, 100);
       empWageBuilder.addCompany("Company B", 25, 25, 120);
       empWageBuilder.computeWages();
-  }
-  }
-  
-  EmpWage.main();
+      
+      const totalWageCompanyA = empWageBuilder.getTotalWage("Company A");
+      console.log("Total wage for Company A: " + totalWageCompanyA);
+      
+      const totalWageCompanyB = empWageBuilder.getTotalWage("Company B");
+      console.log("Total wage for Company B: " + totalWageCompanyB);
   
     
     
